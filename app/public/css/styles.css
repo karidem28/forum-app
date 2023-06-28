@@ -1,0 +1,74 @@
+.table {
+    border: solid black 2px;
+    background-color: white;
+}
+
+html {
+    background-color: #00008B;
+}
+
+body {
+    background-color: #ffffff;
+    margin: 0 auto;
+    padding: 40px 20px 20px 20px;
+    width: 1350px;
+    border: 4px solid white;
+}
+
+h1 {
+    color: black;
+    background-color: #00008B;
+    border: solid #00008B 4px;
+    text-align: center;
+    padding-bottom: 20px;
+    padding-top: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.btn {
+    margin: 10px;
+}
+
+.buttons {
+    float: right;
+    margin-bottom: 20px;
+}
+
+.login {
+    color: white;
+}
+
+.col-form-label {
+    color: black;
+}
+
+.navbar {
+    padding: 15px 20px 15px 20px;
+}
+
+.dl-horizontal {
+    background-color: #00008B;
+    padding: 40px 20px 20px 20px;
+}
+
+.row {
+    color: whitesmoke;
+}
+
+.answers {
+    color: black;
+    background-color: #00008B;
+    border: solid #00008B 4px;
+}
+
+a {
+    color: black;
+}
+
+.log-register {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+

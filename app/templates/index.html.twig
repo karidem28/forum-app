@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'Forum Q&A' }}
+{% endblock %}
+
+{% block body %}
+
+    {% if is_granted('ROLE_ADMIN') %}
+    {% endif %}
+    {% if is_granted('ROLE_USER') %}
+    {% endif %}
+{% endblock %}
