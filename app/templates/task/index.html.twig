@@ -42,7 +42,7 @@
                 <tr>
                     <td>{{ task.id }}</td>
                     <td>{{ task.title }}</td>
-                    <td>{{ task.createdAt|date('Y-m-d') }}</td>
+                    <td>{{ task.createdAt|format_date('long') }}</td>
                     <td>{{ task.updatedAt|format_date('long') }}</td>
                     <td>{{ task.category.title }}</td>
                     <td>

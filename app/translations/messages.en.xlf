@@ -238,6 +238,22 @@
                 <source>title.category_list</source>
                 <target>Categories</target>
             </trans-unit>
+            <trans-unit id="label.sign.in">
+                <source>label.sign.in</source>
+                <target>Please sign in</target>
+            </trans-unit>
+            <trans-unit id="label.emaill">
+                <source>label.emaill</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="label.password">
+                <source>label.password</source>
+                <target>Password</target>
+            </trans-unit>
+            <trans-unit id="label.sign_in">
+                <source>label.sign_in</source>
+                <target>Login</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

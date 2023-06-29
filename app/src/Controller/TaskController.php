@@ -236,7 +236,10 @@ class TaskController extends AbstractController
             $comment->setUpdatedAt(new \DateTime());
             $commentService->save($comment);
 
-            $this->addFlash('success', 'message_added_successfully');
+            $this->addFlash(
+                'success',
+                $this->translator->trans('message_added_successfully')
+            );
 
             return $this->redirectToRoute('task_show', ['id' => $task->getId()]);
         }

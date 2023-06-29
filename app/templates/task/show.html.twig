@@ -44,6 +44,7 @@
         {% else %}
             <div>{{ 'comments.no_comments'|trans }}</div>
         {% endif %}
+
         <p class="button">
             <a href="{{ url('task_comment', {id: task.id}) }}" title="{{ 'action_add_comment'|trans }}">
                 {{ 'action_add_comment'|trans }}
