@@ -6,11 +6,8 @@
 namespace App\Service;
 
 use App\Entity\User;
-use App\Entity\UsersData;
 use App\Repository\UserRepository;
-use App\Repository\UsersDataRepository;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-
 
 /**
  * Class RegistrationService.
@@ -27,12 +24,11 @@ class RegistrationService
      */
     private UserRepository $userRepository;
 
-
     /**
      * RegistrationService constructor.
      *
-     * @param \App\Repository\UserRepository                                        $userRepository      User repository
-     * @param \Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface $passwordEncoder    Password Encoder
+     * @param \App\Repository\UserRepository                                        $userRepository  User repository
+     * @param \Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface $passwordEncoder Password Encoder
      */
     public function __construct(UserRepository $userRepository, UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -56,8 +52,7 @@ class RegistrationService
     /**
      * Register.
      *
-     * @param                       $data
-     * @param \App\Entity\User      $user      User entity
+     * @param \App\Entity\User $user User entity
      *
      * @throws \Doctrine\ORM\ORMException
      */
@@ -70,6 +65,6 @@ class RegistrationService
         );
         $user->setRoles(['ROLE_USER']);
 
-        $this->userRepository->save($user,true);
+        $this->userRepository->save($user, true);
     }
 }

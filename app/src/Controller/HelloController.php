@@ -31,11 +31,13 @@ class HelloController extends AbstractController
     )]
     public function index(string $name): Response
     {
-        if(isset($_GET['name'])) $name = $_GET['name'];
+        if (isset($_GET['name'])) {
+            $name = $_GET['name'];
+        }
+
         return $this->render(
             'hello/index.html.twig',
             ['name' => $name]
         );
     }
 }
-

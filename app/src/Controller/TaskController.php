@@ -71,17 +71,18 @@ class TaskController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET', )]
+    #[Route('/{id}', name: 'task_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
     #[IsGranted('VIEW', subject: 'task')]
-
     public function show(Task $task, CommentService $commentService): Response
     {
         // dd($commentService->findBy(['task' => $task]));
 
-        return $this->render('task/show.html.twig',
+        return $this->render(
+            'task/show.html.twig',
             ['task' => $task,
-                'comments' => $commentService->findBy(['task' => $task])
-            ]);
+                'comments' => $commentService->findBy(['task' => $task]),
+            ]
+        );
     }
 
     /**
@@ -134,7 +135,6 @@ class TaskController extends AbstractController
     #[IsGranted('EDIT', subject: 'task')]
     public function edit(Request $request, Task $task): Response
     {
-
         $form = $this->createForm(
             TaskType::class,
             $task,
@@ -207,19 +207,16 @@ class TaskController extends AbstractController
         );
     }
 
-
     /**
      * Comment action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request        HTTP request
-     * @param \App\Entity\Task                          $task           Task entity
-     * @param CommentService                            $commentService
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP request
+     * @param \App\Entity\Task                          $task    Task entity
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
-     *
      */
     #[Route('/{id}/comment', name: 'task_comment', requirements: ['id' => '[1-9]\d*'], methods: 'GET|POST')]
     #[IsGranted('ROLE_USER')]

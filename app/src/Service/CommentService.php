@@ -7,7 +7,6 @@ namespace App\Service;
 
 use App\Entity\Comment;
 use App\Repository\CommentRepository;
-use Knp\Component\Pager\Pagination\PaginationInterface;
 use Knp\Component\Pager\PaginatorInterface;
 
 /**
@@ -17,15 +16,11 @@ class CommentService
 {
     /**
      * Comment repository.
-     *
-     * @var \App\Repository\CommentRepository
      */
     private CommentRepository $commentRepository;
 
     /**
      * Paginator.
-     *
-     * @var \Knp\Component\Pager\PaginatorInterface
      */
     private PaginatorInterface $paginator;
 
@@ -40,7 +35,6 @@ class CommentService
         $this->commentRepository = $commentRepository;
         $this->paginator = $paginator;
     }
-
 
     /**
      * Save comment.
@@ -69,8 +63,7 @@ class CommentService
     }
 
     /**
-     * Find comment by task
-     * @param array $task
+     * Find comment by task.
      *
      * @return Comment[]
      */

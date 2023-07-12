@@ -15,11 +15,11 @@ use Knp\Component\Pager\Pagination\PaginationInterface;
  */
 interface TaskServiceInterface
 {
-
     /**
      * Get paginated list.
      *
-     * @param int  $page   Page number
+     * @param int $page Page number
+     *
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedList(int $page): PaginationInterface;
@@ -29,6 +29,7 @@ interface TaskServiceInterface
      *
      * @param int  $page   Page number
      * @param User $author Author
+     *
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedListByAuthor(int $page, User $author): PaginationInterface;
@@ -36,8 +37,9 @@ interface TaskServiceInterface
     /**
      * Get paginated list by Category.
      *
-     * @param int  $page   Page number
+     * @param int      $page     Page number
      * @param Category $category Category
+     *
      * @return PaginationInterface<string, mixed> Paginated list
      */
     public function getPaginatedListByCategory(int $page, Category $category): PaginationInterface;

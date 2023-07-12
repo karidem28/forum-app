@@ -113,8 +113,8 @@ class TagController extends AbstractController
     /**
      * Edit action.
      *
-     * @param Request  $request  HTTP request
-     * @param Tag $tag Tag entity
+     * @param Request $request HTTP request
+     * @param Tag     $tag     Tag entity
      *
      * @return Response HTTP response
      */
@@ -154,22 +154,22 @@ class TagController extends AbstractController
     /**
      * Delete action.
      *
-     * @param Request  $request  HTTP request
-     * @param Tag $tag Tag entity
+     * @param Request $request HTTP request
+     * @param Tag     $tag     Tag entity
      *
      * @return Response HTTP response
      */
     #[Route('/{id}/delete', name: 'tag_delete', requirements: ['id' => '[1-9]\d*'], methods: 'GET|DELETE')]
     public function delete(Request $request, Tag $tag): Response
     {
-//        if(!$this->tagService->canBeDeleted($tag)) {
-//            $this->addFlash(
-//                'warning',
-//                $this->translator->trans('message.tag_contains_tasks')
-//            );
-//
-//            return $this->redirectToRoute('tag_index');
-//        }
+        //        if(!$this->tagService->canBeDeleted($tag)) {
+        //            $this->addFlash(
+        //                'warning',
+        //                $this->translator->trans('message.tag_contains_tasks')
+        //            );
+        //
+        //            return $this->redirectToRoute('tag_index');
+        //        }
 
         $form = $this->createForm(
             FormType::class,
@@ -200,6 +200,4 @@ class TagController extends AbstractController
             ]
         );
     }
-
-
 }

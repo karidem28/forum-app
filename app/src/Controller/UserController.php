@@ -7,7 +7,6 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\Type\UserType;
-use App\Controller\IsGranted;
 use App\Service\UserServiceInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,15 +37,17 @@ class UserController extends AbstractController
      */
     private TranslatorInterface $translator;
 
-
     /**
      * Constructor.
      *
      * @param UserServiceInterface $userService User service
      * @param TranslatorInterface  $translator  Translator
      */
-    public function __construct(UserServiceInterface $userService, TranslatorInterface $translator, UserPasswordHasherInterface $passwordHasher)
-    {
+    public function __construct(
+        UserServiceInterface $userService,
+        TranslatorInterface $translator,
+        UserPasswordHasherInterface $passwordHasher
+    ) {
         $this->userService = $userService;
         $this->translator = $translator;
         $this->passwordHasher = $passwordHasher;
@@ -76,7 +77,7 @@ class UserController extends AbstractController
      *
      * @return Response HTTP response
      */
-    #[Route('/{id}', name: 'user_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET', )]
+    #[Route('/{id}', name: 'user_show', requirements: ['id' => '[1-9]\d*'], methods: 'GET')]
     #[IsGranted('VIEW', subject: 'user')]
     public function show(User $user): Response
     {
@@ -132,7 +133,6 @@ class UserController extends AbstractController
     #[Route('/{id}/edit', name: 'user_edit', requirements: ['id' => '[1-9]\d*'], methods: 'GET|PUT')]
     public function edit(Request $request, User $user): Response
     {
-
         $form = $this->createForm(
             UserType::class,
             $user,
@@ -144,16 +144,14 @@ class UserController extends AbstractController
 
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
-
             $user->setPassword(
                 $this->passwordHasher->hashPassword(
                     $user,
                     $user->getPassword()
                 )
             );
-            //dd($user);
+            // dd($user);
 
             $this->userService->save($user);
 

@@ -135,11 +135,8 @@ class TaskRepository extends ServiceEntityRepository
         return $queryBuilder;
     }
 
-
     /**
      * Query tasks by Category.
-     *
-     * @param User $user User entity
      *
      * @return QueryBuilder Query builder
      */
@@ -152,5 +149,4 @@ class TaskRepository extends ServiceEntityRepository
 
         return $queryBuilder;
     }
-
 }

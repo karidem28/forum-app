@@ -36,12 +36,13 @@ class CategoryService implements CategoryServiceInterface
     /**
      * Constructor.
      *
-     * @param CategoryRepository $repository
-     * @param PaginatorInterface $paginator  Paginator
+     * @param PaginatorInterface $paginator Paginator
      */
-
-    public function __construct(CategoryRepository $categoryRepository,TaskRepository $taskRepository ,PaginatorInterface $paginator)
-    {
+    public function __construct(
+        CategoryRepository $categoryRepository,
+        TaskRepository $taskRepository,
+        PaginatorInterface $paginator
+    ) {
         $this->categoryRepository = $categoryRepository;
         $this->paginator = $paginator;
         $this->taskRepository = $taskRepository;
@@ -62,8 +63,6 @@ class CategoryService implements CategoryServiceInterface
             CategoryRepository::PAGINATOR_ITEMS_PER_PAGE
         );
     }
-
-
 
     /**
      * Save entity.
@@ -93,7 +92,7 @@ class CategoryService implements CategoryServiceInterface
             $result = $this->taskRepository->countByCategory($category);
 
             return !($result > 0);
-        }catch(NoResultException  | NonUniqueResultException $e) {
+        } catch (NoResultException|NonUniqueResultException $e) {
             return false;
         }
     }

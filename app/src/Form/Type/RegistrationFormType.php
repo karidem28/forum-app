@@ -54,7 +54,7 @@ class RegistrationFormType extends AbstractType
                     'constraints' => [
                         new Length(['min' => 6, 'max' => 191]),
                         new NotBlank(),
-                    ] ,
+                    ],
                     'first_options' => ['label' => 'user.password'],
                     'second_options' => ['label' => 'user.password_repeat'],
                 ],
@@ -68,14 +68,13 @@ class RegistrationFormType extends AbstractType
                     'constraints' => [
                         new Length(['min' => 3, 'max' => 16]),
                         new NotBlank(),
-                    ] ,
+                    ],
                     'attr' => [
                         'minlength' => 3,
                         'maxlength' => 16,
                     ],
                 ]
             );
-
     }
 
     /**

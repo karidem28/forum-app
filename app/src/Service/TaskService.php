@@ -9,7 +9,6 @@ use App\Entity\Task;
 use App\Entity\User;
 use App\Entity\Category;
 use App\Repository\TaskRepository;
-use App\Repository\CategoryRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Knp\Component\Pager\Pagination\PaginationInterface;
 
@@ -43,7 +42,7 @@ class TaskService implements TaskServiceInterface
     /**
      * Get paginated list.
      *
-     * @param int  $page   Page number
+     * @param int $page Page number
      *
      * @return PaginationInterface<string, mixed> Paginated list
      */
@@ -76,13 +75,14 @@ class TaskService implements TaskServiceInterface
     /**
      * Get paginated list by Category.
      *
-     * @param int  $page   Page number
+     * @param int      $page     Page number
      * @param Category $category Category
+     *
      * @return PaginationInterface<string, mixed> Paginated list
      */
-    public function getPaginatedListByCategory(int $page, Category $category): PaginationInterface {
-
-        //dd($this->taskRepository->findBy(["category" => $category]));
+    public function getPaginatedListByCategory(int $page, Category $category): PaginationInterface
+    {
+        // dd($this->taskRepository->findBy(["category" => $category]));
 
         return $this->paginator->paginate(
             $this->taskRepository->queryByCategory($category),
@@ -98,8 +98,6 @@ class TaskService implements TaskServiceInterface
 
     /**
      * Save entity.
-     *
-     * @param Task $category Category entity
      */
     public function save(Task $task): void
     {
@@ -115,6 +113,4 @@ class TaskService implements TaskServiceInterface
     {
         $this->taskRepository->delete($task);
     }
-
-
 }

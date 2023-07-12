@@ -1,0 +1,18 @@
+Krótka instrukcja instalacji:
+
+- uruchamiamy PhpStorm i klikamy New Project.
+- wybieramy opcję Get from VCS.(lub wrzucamy katalog z kodem projektu do folderu PhpstormProjects i uruchamiamy go jako New project).
+- w adresie URL podajemy adres to repozytorium, w tym przypadku: https://github.com/nowakmj/Project (pomijamy jeżeli korzystamy z mody z przeniesieniem folderu z projektem).
+- klikamy clone. (jak wyżej).
+- po przeniesieniu plików wchodzimy w terminal i wpisujemy po kolei:
+  0.(jeżeli nie klonujemy z gita tylko przenosimy pliki projektu do katalogu z projektami to musimy nadać uprawnienia: chmod -R 777 * ).
+  1. docker-compose up -d
+  2. docker-compose exec php bash
+  3. cd app
+  4. composer install.
+  5. w pliku .env szukamy linijki DATABASE_URL i zmieniamy dane dostępowe na mysql://symfony:symfony@mysql:3306/symfony
+- w terminalu wpisujemy:
+  1. cd app
+  2. bin/console doctrine:migrations:migrate
+  3. bin/console doctrine:fixtures:load
+- wchodzimy w przeglądarke na adres localhost:8000 i sprawdzamy czy działa.

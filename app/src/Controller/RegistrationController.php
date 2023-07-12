@@ -6,7 +6,6 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\HomeType;
 use App\Form\Type\RegistrationFormType;
 use App\Service\RegistrationService;
 use App\Service\UserService;
@@ -20,7 +19,6 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class RegistrationController extends AbstractController
 {
-
     /**
      * User service.
      */
@@ -59,11 +57,10 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class);
         $form->handleRequest($request);
 
-
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
-            if ($this->userService->findOneByEmail($data['email']) !== null) {
+            if (null !== $this->userService->findOneByEmail($data['email'])) {
                 $this->addFlash('danger', 'message_email_already_exists');
 
                 return $this->redirectToRoute('app_register');
@@ -72,7 +69,7 @@ class RegistrationController extends AbstractController
             $this->registrationService->register($data, $user);
             $this->addFlash('success', 'message_registered_successfully');
 
-            //return $this->redirectToRoute('task_index');
+            // return $this->redirectToRoute('task_index');
         }
 
         return $this->render(
